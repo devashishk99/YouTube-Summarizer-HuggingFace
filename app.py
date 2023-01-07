@@ -8,8 +8,8 @@ def load_summarizer():
     model = pipeline("summarization", device=0)
     return model
 
-def get_video_metadata(video_url):
-    yt = YouTube(video_url)
+def get_video_metadata(url):
+    yt = YouTube(url)
     st.image(yt.thumbnail_url)
     st.header(yt.title)
 
@@ -34,7 +34,7 @@ def generate_text_chunks(text):
 st.markdown("<h1 style='text-align: center; color: white;'>Youtube Video Summarizer</h1><br>", unsafe_allow_html=True)
 st.markdown("View a summary of any Youtube video using its url.")
 
-video_url  = st.text_input("Enter YouTube video URL")
+video_url = st.text_input("Enter YouTube video URL")
 video_id = video_url.split("=")[1]
 
 button = st.button("Summarize")

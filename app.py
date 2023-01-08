@@ -39,12 +39,12 @@ video_url = st.text_input("Enter YouTube video URL")
 
 button = st.button("Summarize")
 
+summarizer = load_summarizer()
 with st.spinner("Generating Summary.."):
     if button and video_url:
         video_id = get_video_metadata(video_url)
         video_transcript = get_video_transcript(video_id)
         text_chunks = generate_text_chunks(video_transcript)
-        summarizer = pipeline('summarization')
         res = summarizer(text_chunks)
         video_summary = ' '.join([summ['summary_text'] for summ in res])
         st.write(video_summary)

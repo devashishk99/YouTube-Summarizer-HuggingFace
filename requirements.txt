@@ -3,3 +3,4 @@ youtube_transcript_api
 streamlit
 pytube
 torch
+stqdm

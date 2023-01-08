@@ -3,7 +3,7 @@ from youtube_transcript_api import YouTubeTranscriptApi
 import streamlit as st
 from pytube import YouTube
 
-@st.experimental_memo
+@st.cache(allow_output_mutation=True)
 def load_summarizer():
     model = pipeline("summarization", device=0)
     return model

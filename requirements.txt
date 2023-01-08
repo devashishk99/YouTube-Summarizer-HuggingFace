@@ -2,5 +2,6 @@ transformers
 youtube_transcript_api
 streamlit
 pytube
-torch
+--find-links https://download.pytorch.org/whl/cpu/torch_stable.html
+torch==1.10.0+cpu
 stqdm

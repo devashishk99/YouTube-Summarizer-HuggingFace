@@ -35,7 +35,7 @@ def generate_text_chunks(text):
 st.markdown("<h1 style='text-align: center; color: white;'>Youtube Video Summarizer</h1><br>", unsafe_allow_html=True)
 st.markdown("View a summary of any Youtube video using its url.")
 
-video_url = st.text_input("Enter YouTube video URL", "https://www.youtube.com/watch?v=9_AuKM7S6TU")
+video_url = st.text_input("Enter YouTube video URL", "https://www.youtube.com/watch?v=yxsoE3jO8HM")
 
 button = st.button("Summarize")
 

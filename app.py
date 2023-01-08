@@ -5,7 +5,7 @@ from pytube import YouTube
 
 @st.cache(allow_output_mutation=True)
 def load_summarizer():
-    model = pipeline("summarization", device=0)
+    model = pipeline("summarization")
     return model
 
 def get_video_metadata(url):

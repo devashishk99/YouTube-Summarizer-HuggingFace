@@ -1,6 +1,7 @@
+--extra-index-url https://download.pytorch.org/whl/cu113
+torch
+stqdm
 transformers
 youtube_transcript_api
 streamlit
 pytube
-torch
-stqdm

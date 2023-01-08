@@ -7,5 +7,5 @@
 + On compilation of the entire transcript, it is divided into smaller chunks as LLMs can summarize text only upto certain threshold.
 + HuggingFace Pipeline model (sshleifer/distilbart-cnn-12-6) is used to generate the transcript summary
 
-The code is also hosted on Streamlit Cloud and can be accessed using the link below:
+The code is also hosted on Streamlit Cloud and can be accessed using the link:
 https://devashishk99-youtube-summarizer-huggingface-app-02ennk.streamlit.app/

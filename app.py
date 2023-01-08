@@ -12,6 +12,7 @@ def get_video_metadata(url):
     yt = YouTube(url)
     st.image(yt.thumbnail_url)
     st.header(yt.title)
+    return url.split("=")[1]
 
 def get_video_transcript(video_id):
     transcript = YouTubeTranscriptApi.get_transcript(video_id)
@@ -35,15 +36,15 @@ st.markdown("<h1 style='text-align: center; color: white;'>Youtube Video Summari
 st.markdown("View a summary of any Youtube video using its url.")
 
 video_url = st.text_input("Enter YouTube video URL")
-video_id = video_url.split("=")[1]
 
 button = st.button("Summarize")
 
 with st.spinner("Generating Summary.."):
     if button and video_url:
-        get_video_metadata(video_url)
+        video_id = get_video_metadata(video_url)
         video_transcript = get_video_transcript(video_id)
         text_chunks = generate_text_chunks(video_transcript)
+        summarizer = pipeline('summarization')
         res = summarizer(text_chunks)
         video_summary = ' '.join([summ['summary_text'] for summ in res])
         st.write(video_summary)

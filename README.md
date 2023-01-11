@@ -1,4 +1,4 @@
-# YouTube Video Summarizer using HuggingFace 
+# YouTube Video Summarizer using HuggingFace and Youtube Transcript API
 
 ## In this project, a summary is generated for any YouTube video given its url.
 

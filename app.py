@@ -36,21 +36,26 @@ def generate_text_chunks(text):
         res.append(text[start:end])
     return res
 
-
+#execution starts from here-
 st.markdown("<h1 style='text-align: center; color: white;'>Youtube Video Summarizer</h1><br>", unsafe_allow_html=True)
 st.markdown("View a summary of any Youtube video using its url.")
 
+#user input of video url is stored
 video_url = st.text_input("Enter YouTube video URL", "https://www.youtube.com/watch?v=yxsoE3jO8HM")
 
+#invokes the task to generate summary
 button = st.button("Summarize")
 
+#loads the pipeline model
 summarizer = load_summarizer()
+
+#displays spinner as a feedback to user by the time summary is being generated
 with st.spinner("Generating Summary.."):
     if button and video_url:
         video_id = get_video_metadata(video_url)
         video_transcript = get_video_transcript(video_id)
         text_chunks = generate_text_chunks(video_transcript)
         res = summarizer(text_chunks)
-        video_summary = ' '.join([summ['summary_text'] for summ in res])
-        st.write(video_summary)
+        video_summary = ' '.join([summ['summary_text'] for summ in res]) #summaries of all the chunks are put together
+        st.write(video_summary) #displays the final summary
 

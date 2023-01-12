@@ -2,6 +2,7 @@ from transformers import pipeline #the holy grail of all pre-trained LLMs
 from youtube_transcript_api import YouTubeTranscriptApi #the python API which allows you to get the transcripts/subtitles for a given YouTube video 
 import streamlit as st #open-source framework to build quick webapps
 from pytube import YouTube #library for downloading YouTube Videos
+import re #provides regular expression matching operations
 
 #runs the function and stores the model in a local cache
 #helpful when working large ml models
@@ -15,7 +16,8 @@ def get_video_metadata(url):
     yt = YouTube(url)
     st.image(yt.thumbnail_url)
     st.header(yt.title)
-    return url.split("=")[1]
+    id = extract.video_id(url)
+    return id
 
 #generates transcript using the api 
 def get_video_transcript(video_id):
@@ -43,8 +45,18 @@ st.markdown("View a summary of any Youtube video using its url.")
 #user input of video url is stored
 video_url = st.text_input("Enter YouTube video URL", "https://www.youtube.com/watch?v=yxsoE3jO8HM")
 
+#flag to toggle 'Summary' button based on validity of url
+summ_flag = False
+
+#check if video url is valid and matches the pattern using regex
+url_regex = r"^(http(s)?:\/\/)?((w){3}.)?youtu(be|.be)?(\.com)?\/.+"
+url_check = re.search(url_regex,url)
+if url_check == None:
+    st.error('Please provide a valid YouTube url!', icon="🚨")
+    summ_flag = True
+
 #invokes the task to generate summary
-button = st.button("Summarize")
+button = st.button("Summarize", disabled=summ_flag)
 
 #loads the pipeline model
 summarizer = load_summarizer()

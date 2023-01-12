@@ -50,7 +50,7 @@ summ_flag = False
 
 #check if video url is valid and matches the pattern using regex
 url_regex = r"^(http(s)?:\/\/)?((w){3}.)?youtu(be|.be)?(\.com)?\/.+"
-url_check = re.search(url_regex,url)
+url_check = re.search(url_regex,video_url)
 if url_check == None:
     st.error('Please provide a valid YouTube url!', icon="🚨")
     summ_flag = True

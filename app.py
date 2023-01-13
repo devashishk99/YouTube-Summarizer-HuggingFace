@@ -42,8 +42,7 @@ def generate_text_chunks(text):
 st.markdown("<h1 style='text-align: center; color: white;'>Youtube Video Summarizer</h1><br>", unsafe_allow_html=True)
 st.info("View a summary of any Youtube video using its url.")
 
-st.caption("Note: The longer the video, longer will be the time to generate summary.")
-st.caption("It's advisable to use 5-10 min videos for quick results.")
+st.caption("Note: The longer the video, longer will be the time to generate summary. It's advisable to use 5-10 min videos for quick results.")
 
 #user input of video url is stored
 video_url = st.text_input("Enter YouTube video URL", "https://www.youtube.com/watch?v=yxsoE3jO8HM")

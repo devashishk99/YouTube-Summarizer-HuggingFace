@@ -16,7 +16,7 @@ def get_video_metadata(url):
     yt = YouTube(url)
     st.image(yt.thumbnail_url)
     st.header(yt.title)
-    id = extract.video_id(url)
+    id = url.split("=")[1]
     return id
 
 #generates transcript using the api 
